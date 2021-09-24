@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Svetlana Kuznetsova](https://up.htmlacademy.ru/javascript/24/user/1534105).
-* Наставник: `Неизвестно`.
+* Наставник: [Максим Прусаков](https://htmlacademy.ru/profile/hikikomori).
 
 ---
 
