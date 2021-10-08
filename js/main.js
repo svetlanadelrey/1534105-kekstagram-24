@@ -7,6 +7,11 @@ function getRandomPositiveInteger (from, to) {
   return Math.floor(result);
 }
 
+function checkStringLength(string, maxLength) {
+  return string.length <= maxLength;
+}
+checkStringLength('Проверяемая строка', 40);
+
 const DESCRIPTION = [
   'Осенняя пора',
   'Хорошо посидели!',
