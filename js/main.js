@@ -1,5 +1,3 @@
-/* eslint-disable id-length */
-
 function getRandomPositiveInteger (from, to) {
   const lower = Math.ceil(Math.min(Math.abs(from), Math.abs(to)));
   const upper = Math.floor(Math.max(Math.abs(from), Math.abs(to)));
@@ -11,6 +9,13 @@ function checkStringLength(string, maxLength) {
   return string.length <= maxLength;
 }
 checkStringLength('Проверяемая строка', 40);
+
+const PHOTO_DESCRIPTION_COUNT = 25;
+const MIN_AVATAR_NUMBER = 1;
+const MAX_AVATAR_NUMBER = 6;
+const MIN_LIKES_NUMBER = 15;
+const MAX_LIKES_NUMBER = 200;
+const generateNumberComments = getRandomPositiveInteger(1, 5);
 
 const DESCRIPTION = [
   'Осенняя пора',
@@ -43,26 +48,32 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-const generateComment = (index) => ({
+const createComment = (index) => ({
   id: index,
-  avatar: `img/avatar-${getRandomPositiveInteger(1,6)}.svg`,
+  avatar: `img/avatar-${getRandomPositiveInteger(MIN_AVATAR_NUMBER,MAX_AVATAR_NUMBER)}.svg`,
   message: MESSAGES[getRandomPositiveInteger(0, MESSAGES.length - 1)],
   name: NAMES[getRandomPositiveInteger(0, NAMES.length - 1)],
 });
+
+const generateComment = (count) => {
+  for (let i= 1; i <= count; i++) {
+    createComment(i);
+  }
+};
+generateComment(generateNumberComments);
 
 const createPhotoDescription = (index) => ({
   id: index,
   url: `photos/${index}.jpg`,
   description: DESCRIPTION[getRandomPositiveInteger(0, DESCRIPTION.length - 1)],
-  likes: getRandomPositiveInteger(15,200),
-  comments: generateComment(index),
+  likes: getRandomPositiveInteger(MIN_LIKES_NUMBER,MAX_LIKES_NUMBER),
+  comments: Array.from({length: generateNumberComments}, createComment),
 });
 
-const photoDescriptionCount = 25;
 const generateObjects = (count) => {
   for (let i= 1; i <= count; i++) {
     createPhotoDescription(i);
   }
 };
-generateObjects(photoDescriptionCount);
+generateObjects(PHOTO_DESCRIPTION_COUNT);
 
