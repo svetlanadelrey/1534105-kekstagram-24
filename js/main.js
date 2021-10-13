@@ -15,7 +15,8 @@ const MIN_AVATAR_NUMBER = 1;
 const MAX_AVATAR_NUMBER = 6;
 const MIN_LIKES_NUMBER = 15;
 const MAX_LIKES_NUMBER = 200;
-const generateNumberComments = getRandomPositiveInteger(1, 5);
+const MIN_COMMENTS_NUMBER = 1;
+const MAX_COMMENTS_NUMBER = 5;
 
 const DESCRIPTION = [
   'Осенняя пора',
@@ -55,25 +56,27 @@ const createComment = (index) => ({
   name: NAMES[getRandomPositiveInteger(0, NAMES.length - 1)],
 });
 
-const generateComment = (count) => {
-  for (let i= 1; i <= count; i++) {
-    createComment(i);
+const generateComments = (minNumber, maxNumber) => {
+  const commentArray = [];
+  for (let i= 1; i <= getRandomPositiveInteger(minNumber, maxNumber); i++) {
+    commentArray.push(createComment(i));
   }
+  return commentArray;
 };
-generateComment(generateNumberComments);
 
 const createPhotoDescription = (index) => ({
   id: index,
   url: `photos/${index}.jpg`,
   description: DESCRIPTION[getRandomPositiveInteger(0, DESCRIPTION.length - 1)],
   likes: getRandomPositiveInteger(MIN_LIKES_NUMBER,MAX_LIKES_NUMBER),
-  comments: Array.from({length: generateNumberComments}, createComment),
+  comments: generateComments(MIN_COMMENTS_NUMBER, MAX_COMMENTS_NUMBER),
 });
 
 const generateObjects = (count) => {
+  const photoArray = [];
   for (let i= 1; i <= count; i++) {
+    photoArray.push(createPhotoDescription(i));
     createPhotoDescription(i);
   }
 };
 generateObjects(PHOTO_DESCRIPTION_COUNT);
-
