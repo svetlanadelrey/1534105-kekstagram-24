@@ -76,7 +76,7 @@ const generateObjects = (count) => {
   const photoArray = [];
   for (let i= 1; i <= count; i++) {
     photoArray.push(createPhotoDescription(i));
-    createPhotoDescription(i);
   }
+  return photoArray
 };
 generateObjects(PHOTO_DESCRIPTION_COUNT);
