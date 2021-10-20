@@ -71,4 +71,4 @@ const generateObjects = (count) => {
 };
 generateObjects(PHOTO_DESCRIPTION_COUNT);
 
-export{generateObjects};
+export{generateObjects, PHOTO_DESCRIPTION_COUNT};
