@@ -1,4 +1,3 @@
-import {generateObjects} from './utils.js';
-import {PHOTO_DESCRIPTION_COUNT} from './data';
+import {generateObjects, PHOTO_DESCRIPTION_COUNT} from './data.js';
 
 generateObjects(PHOTO_DESCRIPTION_COUNT);
