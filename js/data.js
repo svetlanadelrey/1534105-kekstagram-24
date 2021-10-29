@@ -69,6 +69,5 @@ const generateObjects = (count) => {
   }
   return photoArray;
 };
-generateObjects(PHOTO_DESCRIPTION_COUNT);
 
 export{generateObjects, PHOTO_DESCRIPTION_COUNT};
