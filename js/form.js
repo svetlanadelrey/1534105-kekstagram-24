@@ -14,15 +14,15 @@ const textDescriptionInput = document.querySelector('.text__description');
 
 const validateHashtags = () => {
   hashtagInput.addEventListener('input', () => {
-    const hashtagsArray = hashtagInput.value.split('');
-    if (hashtagsArray[0] !== '#') {
-      hashtagInput.setCustomValidity('Хэштег должен начинаться с #');
-    } else if (hashtagsArray.length > MAX_HASHTAG_COUNT) {
+    const hashtagsArray = hashtagInput.value.split(' ');
+    if (hashtagsArray.length > MAX_HASHTAG_COUNT) {
       hashtagInput.setCustomValidity('Нельзя указать больше 5 хэштегов');
     } else {
       hashtagsArray.forEach((hashtag) => {
         if (hashtag === '#') {
           hashtagInput.setCustomValidity('Хэштег не может состоять только из одной решётки');
+        } else if (!hashtag.startsWith('#')) {
+          hashtagInput.setCustomValidity('Хэштег начинается с #');
         } else if (hashtag.length > MAX_HASHTAG_LENGTH) {
           hashtagInput.setCustomValidity('Максимальная длина хэштега 20 символов');
         } else if (!regex.test(hashtag)) {
